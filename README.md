@@ -4,27 +4,16 @@
 
 In the spirit of snapping to real world application, I want to expand the problem slightly: the chatbot should also collect and summarize the candidate's responses and record them in a structured format, which allows another actor (such as hiring manager) to quickly review and make a decision to move forward with the candidate
 
-## Architecture
-
-### Services
-
-- Agent (Core): The core service that will connect to LLM and LLM provider, owning the conversation loop flow. The agent will also have some built-in capabilities such as memory (remember the conversation and session), tool usage (to grab external resources, an example for this use case would be to get the a set of matching job to the candidate).
-- Persist store (Backend): A backend service that persist/managed structured data, user authentication + authorization
-- User Interface (Frontend): An web application that allows both the candidate to interact with the chatbot and for the hiring manager to review the candidate's responses.
-
-### User flow
-
-...
-
-### Architectural Decision
-
-#### Agent Core using Mastra
-
-#### Backend leverage Pocketbase
-
-#### Frontend will be a simple nextjs application
-
 ## How to run
+
+The project can be spin up in a local environment through Makefile and npm:
+
+1. Create the `.env` file by copying `.env.example` and fill in the required values.
+2. Install dependencies: `make install`
+3. Start the server: `make dev`
+4. UI Entrypoint will be available at http://localhost:3000
+
+## Troubleshoot
 
 PocketBase might have issue running as exeuctable on M1 mac due to quarantine. To resolve this, you can try the following steps:
 
@@ -36,3 +25,19 @@ PocketBase might have issue running as exeuctable on M1 mac due to quarantine. T
    ```
 
 3. Run PocketBase again using the executable.
+
+## Architecture
+
+### Services
+
+- Agent (Core): The core service that will connect to LLM and LLM provider, owning the conversation loop flow. The agent will also have some built-in capabilities such as memory (remember the conversation and session), tool usage (to grab external resources, an example for this use case would be to get the a set of matching job to the candidate).
+- Persist store (Backend): A backend service that persist/managed structured data, user authentication + authorization
+- User Interface (Frontend): An web application that allows both the candidate to interact with the chatbot and for the hiring manager to review the candidate's responses.
+
+### Architectural Decision
+
+#### Agent Core using Mastra
+
+#### Backend leverage Pocketbase
+
+#### Frontend picking Next.JS
