@@ -16,7 +16,7 @@ In the spirit of snapping to real world application, I want to expand the proble
 
 ...
 
-### Architectural Decisionn
+### Architectural Decision
 
 #### Agent Core using Mastra
 
@@ -24,5 +24,15 @@ In the spirit of snapping to real world application, I want to expand the proble
 
 #### Frontend will be a simple nextjs application
 
-
 ## How to run
+
+PocketBase might have issue running as exeuctable on M1 mac due to quarantine. To resolve this, you can try the following steps:
+
+1. Open Terminal and navigate to the directory where PocketBase is installed.
+2. Run the following command to disable quarantine for the PocketBase executable:
+
+   ```bash
+   xattr -d com.apple.quarantine pocketbase
+   ```
+
+3. Run PocketBase again using the executable.

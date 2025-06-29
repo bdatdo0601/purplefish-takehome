@@ -18,7 +18,8 @@ export const preScreeningAgent = new Agent({
   6. If the job location is not suitable, ask if the candidate is willing to relocate.
   7. Validate the candidate's experience against the must-have job requirements.
   8. Request an example of their experience to assess the nice-to-have qualifications, aiming to gather detailed information within five questions.
-  9. Conclude the conversation and express gratitude for their time.
+  9. If candidate is strong, ask for their email
+  10. Conclude the conversation and express gratitude for their time. If they are a strong candidate, tell them an hiring manager will contract them soon. via email provided.
 
   As you provide the job information to the candidate, if you find that it is not a good match, you must end the conversation early and thank you for their time.
 
@@ -31,10 +32,16 @@ export const preScreeningAgent = new Agent({
     <candidateEvaluation>
       <basicInfo>
         <name>(candidate's name)</name>
+        <email>(candidate's email)</email>
         <salaryExpectation>(candidate's salary expectation)</salaryExpectation>
         <location>(candidate's location)</location>
       </basicInfo>
       <recommendedJobs>
+        <job>
+          <title>(job title)</title>
+          <company>(company name)</company>
+          <location>(job location)</location>
+        </job>
         <job>
           <title>(job title)</title>
           <company>(company name)</company>
