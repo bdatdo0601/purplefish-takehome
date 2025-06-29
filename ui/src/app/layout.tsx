@@ -34,9 +34,9 @@ export default async function RootLayout({
         <div className="flex flex-col h-screen">
           <div className="p-4 border-2 rounded-lg m-2 h-15 flex-shrink-0 text-right">
             <div className="flex items-center justify-end gap-2">
-              <Link href="/">Pre-Screening</Link>
+              <Link href="/">For Pre-Screening</Link>
               <span>|</span>
-              <Link href="/candidates">Hiring Manager</Link>
+              <Link href="/candidates">For Hiring Manager</Link>
             </div>
           </div>
           <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start p-4 border-2 rounded-lg m-2 flex-1 overflow-auto">

@@ -145,7 +145,7 @@ export const ChatDisplay: React.FC<ChatDisplayProps> = ({ chatSession }) => {
           setInternalChatSession(updatedSession);
           await onNewMessageInSession(updatedSession);
         }}
-        disabled={isCompleted}
+        disabled={isCompleted || isWaitingForAssistant}
       />
     </div>
   );

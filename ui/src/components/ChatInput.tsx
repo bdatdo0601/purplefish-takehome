@@ -1,14 +1,21 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useRef, useEffect } from "react";
 
 interface ChatInputProps {
   disabled?: boolean;
   onSend: (message: string) => Promise<void>;
 }
 
-export const ChatInput: React.FC<ChatInputProps> = ({ onSend, disabled }) => {
+export const ChatInput: React.FC<ChatInputProps> = ({ onSend, disabled = false }) => {
   const [inputMessage, setInputMessage] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (textareaRef.current && !disabled) {
+      textareaRef.current.focus();
+    }
+  }, [disabled]);
 
   const handleSend = useCallback(async () => {
     const input = inputMessage.trim();
@@ -16,7 +23,10 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSend, disabled }) => {
     if (input) {
       await onSend(input);
     }
-  }, [inputMessage]);
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  }, [inputMessage, onSend]);
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -29,6 +39,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSend, disabled }) => {
     <div className="flex-shrink-0 px-6 py-4 border-t border-gray-200 border rounded-lg h-30">
       <div className="flex gap-2 items-center">
         <textarea
+          ref={textareaRef}
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
           onKeyDown={handleKeyPress}
