@@ -38,6 +38,30 @@ PocketBase might have issue running as exeuctable on M1 mac due to quarantine. T
 
 #### Agent Core using Mastra
 
+Mastra provides a robust framework for building LLM-powered agents with built-in conversation management, memory persistence, and tool integration capabilities. This allows us to focus on the interview logic and flow rather than implementing low-level LLM orchestration from scratch. Key benefits include:
+
+- **Conversation Memory**: Automatic session and context management across interview interactions
+- **Tool Integration**: Easy extensibility for future features like job matching or skill assessment
+- **LLM Provider Abstraction**: Flexibility to switch between different LLM providers (OpenAI, Anthropic, etc.)
+- **Structured Output**: Built-in support for generating structured candidate summaries
+
 #### Backend leverage Pocketbase
 
-#### Frontend picking Next.JS
+PocketBase serves as our lightweight, self-contained backend solution that handles data persistence, authentication, and API management without the complexity of a full backend framework. This choice provides:
+
+- **Rapid Development**: Built-in admin UI, authentication, and RESTful APIs out of the box
+- **Schema Management**: Easy database schema definition and migration capabilities
+- **Real-time Updates**: WebSocket support for live interview session monitoring
+- **File Storage**: Built-in file handling for potential resume uploads or interview recordings
+- **Minimal Deployment**: Single binary deployment with embedded SQLite database
+
+#### Frontend picking Next.js
+
+Next.js provides a full-stack React framework that enables both the candidate interview interface and hiring manager review dashboard within a single application. Key advantages include:
+
+- **Server-Side Rendering**: Improved performance and SEO for the application
+- **API Routes**: Built-in API layer to interface with PocketBase and Mastra agent
+- **Real-time Communication**: Easy WebSocket integration for live chat functionality
+- **Component Reusability**: Shared UI components between candidate and hiring manager interfaces
+- **TypeScript Support**: Type safety across the entire frontend application
+- **Deployment Flexibility**: Easy deployment to Vercel, Netlify, or self-hosted environments
